@@ -19,3 +19,9 @@ export function solve(input) {
   }
   return count;
 }
+
+if (location.pathname === "/2019/day/4/input") {
+  const input = document.body.innerText.slice(0, -1);
+  const answer = solve(input);
+  console.log(answer);
+}

@@ -1,6 +1,6 @@
 const adjacentDigitsRegExp = /(\d)\1/;
 
-export default function(input) {
+export default function findNumberOfDifferentPasswords(input) {
   const [start, end] = input.split("-").map(Number);
   let count = 0;
   for (let n = start; n <= end; n++) {

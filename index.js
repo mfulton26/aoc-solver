@@ -18,7 +18,7 @@ export function parsePathname(pathname) {
   }
   const {
     groups: { year, day }
-  } = /\/(?<year>\d+)\/day\/(?<day>\d+)/.exec(pathname);
+  } = match;
   return { year: Number(year), day: Number(day) };
 }
 

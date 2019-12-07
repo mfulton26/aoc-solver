@@ -10,6 +10,12 @@ export async function solveCurrentPuzzle() {
 }
 
 export function parsePathname(pathname) {
+  const match = /\/(?<year>\d+)\/day\/(?<day>\d+)/.exec(pathname);
+  if (!match) {
+    throw new Error(
+      "current document is not recognized as a puzzle page or input page"
+    );
+  }
   const {
     groups: { year, day }
   } = /\/(?<year>\d+)\/day\/(?<day>\d+)/.exec(pathname);

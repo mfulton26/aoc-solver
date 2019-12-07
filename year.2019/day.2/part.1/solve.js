@@ -1,5 +1,5 @@
-import { parseMemory } from "../index.js.js";
-import runProgram from "../runProgram.js.js";
+import { parseMemory } from "../index.js";
+import runProgram from "../runProgram.js";
 
 export default function findValueAtPosition0AfterProgramHalt(input) {
   const memory = parseMemory(input);

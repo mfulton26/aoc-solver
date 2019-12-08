@@ -2,8 +2,9 @@
 
 ## Usage
 
-1. Open Advent of Code
+1. Open [Advent of Code](https://adventofcode.com/)
 1. Log in (if not already logged in)
+1. Navigate to an event (year) and puzzle (day)
 1. Open Developer Tools
 1. In the Console run the following:
 

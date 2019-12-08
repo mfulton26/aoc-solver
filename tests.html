@@ -15,13 +15,12 @@
     <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
     <script>
       async function loadAll() {
-        const nowEastern = new Date(
-          new Date().toLocaleDateString("en-US", {
-            timeZone: "America/New_York"
-          })
-        );
         for (let year = 2019; year <= 2019; year++) {
           for (let day = 1; day <= 25; day++) {
+            const puzzleDate = new Date(Date.UTC(year, 11, day, +5));
+            if (puzzleDate > new Date()) {
+              continue;
+            }
             // todo: ignore days not yet available
             const parts = day === 25 ? 1 : 2;
             for (let part = 1; part <= parts; part++) {
@@ -38,7 +37,7 @@
           }
         }
       }
-      loadAll();
+      window.onload = loadAll();
     </script>
   </body>
 </html>

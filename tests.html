@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Advent of Code Solver—Tests</title>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/qunit/qunit-2.9.2.css"
+    />
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    <script>
+      async function loadAll() {
+        const nowEastern = new Date(
+          new Date().toLocaleDateString("en-US", {
+            timeZone: "America/New_York"
+          })
+        );
+        for (let year = 2019; year <= 2019; year++) {
+          for (let day = 1; day <= 25; day++) {
+            // todo: ignore days not yet available
+            const parts = day === 25 ? 1 : 2;
+            for (let part = 1; part <= parts; part++) {
+              QUnit.module(`Year ${year} Day ${day} Part ${part}`);
+              await new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = `/lib/year.${year}/day.${day}/part.${part}/solve.test.js`;
+                script.type = "module";
+                script.onload = () => resolve();
+                script.onerror = () => resolve(); // todo: reject
+                document.body.appendChild(script);
+              });
+            }
+          }
+        }
+      }
+      loadAll();
+    </script>
+  </body>
+</html>

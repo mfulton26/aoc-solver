@@ -40,7 +40,7 @@ export async function solvePart(year, day, part, input) {
   console.group(`Part ${part}`);
   try {
     const { default: solve } = await import(
-      `https://mfulton26.github.io/aoc-solver/year.${year}/day.${day}/part.${part}/solve.js`
+      `https://mfulton26.github.io/aoc-solver/lib/year.${year}/day.${day}/part.${part}/solve.js`
     );
     if (solve) {
       console.time("duartion");

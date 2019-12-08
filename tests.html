@@ -28,7 +28,7 @@
               QUnit.module(`Year ${year} Day ${day} Part ${part}`);
               await new Promise((resolve, reject) => {
                 const script = document.createElement("script");
-                script.src = `/lib/year.${year}/day.${day}/part.${part}/solve.test.js`;
+                script.src = `lib/year.${year}/day.${day}/part.${part}/solve.test.js`;
                 script.type = "module";
                 script.onload = () => resolve();
                 script.onerror = () => resolve(); // todo: reject

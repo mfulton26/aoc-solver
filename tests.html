@@ -14,30 +14,23 @@
     <div id="qunit-fixture"></div>
     <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
     <script>
-      async function loadAll() {
-        for (let year = 2019; year <= 2019; year++) {
-          for (let day = 1; day <= 25; day++) {
-            const puzzleDate = new Date(Date.UTC(year, 11, day, +5));
-            if (puzzleDate > new Date()) {
-              continue;
-            }
-            // todo: ignore days not yet available
-            const parts = day === 25 ? 1 : 2;
-            for (let part = 1; part <= parts; part++) {
-              QUnit.module(`Year ${year} Day ${day} Part ${part}`);
-              await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.src = `lib/year.${year}/day.${day}/part.${part}/solve.test.js`;
-                script.type = "module";
-                script.onload = () => resolve();
-                script.onerror = () => resolve(); // todo: reject
-                document.body.appendChild(script);
-              });
-            }
+      for (let year = 2019; year <= 2019; year++) {
+        for (let day = 1; day <= 25; day++) {
+          const puzzleDate = new Date(Date.UTC(year, 11, day, +5));
+          if (puzzleDate > new Date()) {
+            continue;
+          }
+          const parts = day === 25 ? 1 : 2;
+          for (let part = 1; part <= parts; part++) {
+            const script = document.createElement("script");
+            script.async = false;
+            script.src = `lib/year.${year}/day.${day}/part.${part}/solve.test.js`;
+            script.type = "module";
+            document.body.appendChild(script);
           }
         }
       }
-      window.onload = loadAll();
+      document.currentScript.remove();
     </script>
   </body>
 </html>

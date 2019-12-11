@@ -1,0 +1,22 @@
+{
+  "name": "aoc-solver",
+  "private": true,
+  "description": "Advent of Code Solver",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfulton26/aoc-solver.git"
+  },
+  "keywords": [],
+  "author": "Mark Fulton",
+  "bugs": {
+    "url": "https://github.com/mfulton26/aoc-solver/issues"
+  },
+  "homepage": "https://github.com/mfulton26/aoc-solver#readme",
+  "devDependencies": {
+    "@types/qunit": "^2.9.0"
+  }
+}

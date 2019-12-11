@@ -31,5 +31,3 @@ for (let year = 2015; year <= currentYear; year++) {
     }
   }
 }
-
-document.currentScript.remove();

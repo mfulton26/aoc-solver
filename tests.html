@@ -30,7 +30,8 @@
     </script>
     <script src="lib/util/Grid.test.js" type="module"></script>
     <script>
-      for (let year = 2019; year <= 2019; year++) {
+      const currentYear = new Date().getFullYear();
+      for (let year = 2015; year <= currentYear; year++) {
         for (let day = 1; day <= 25; day++) {
           const puzzleDate = new Date(Date.UTC(year, 11, day, +5));
           if (puzzleDate > new Date()) {

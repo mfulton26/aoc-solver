@@ -13,6 +13,21 @@
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    <script>
+      const regExp = /\/year\.(?<year>\d+)\/day\.(?<day>\d+)\/part\.(?<part>\d+)\//;
+      window.AOCQUnit = {
+        module({ url }, ...args) {
+          const {
+            groups: { year, day, part }
+          } = regExp.exec(url);
+          QUnit.module(`Year ${year}`, () => {
+            QUnit.module(`Day ${day}`, () => {
+              QUnit.module(`Part ${part}`, ...args);
+            });
+          });
+        }
+      };
+    </script>
     <script src="lib/util/Grid.test.js" type="module"></script>
     <script>
       for (let year = 2019; year <= 2019; year++) {

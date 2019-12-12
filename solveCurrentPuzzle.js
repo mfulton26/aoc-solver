@@ -1,3 +1,5 @@
 import { solveCurrentPuzzle } from "./index.js";
 
-solveCurrentPuzzle();
+const { search } = new URL(import.meta.url);
+
+solveCurrentPuzzle(search);

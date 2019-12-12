@@ -1,11 +1,11 @@
 const inputPathnameRegExp = /\/(?<year>\d+)\/day\/(?<day>\d+)\/input/;
 
-export async function solveCurrentPuzzle() {
+export async function solveCurrentPuzzle(search = undefined) {
   const { year, day } = parsePathname(location.pathname);
   const input = await getInput(year, day);
-  await solvePart(year, day, 1, input);
+  await solvePart(year, day, 1, input, search);
   if (day !== 25) {
-    await solvePart(year, day, 2, input);
+    await solvePart(year, day, 2, input, search);
   }
 }
 
@@ -36,15 +36,15 @@ export async function getRawInput(year, day) {
   }
 }
 
-export async function solvePart(year, day, part, input) {
+export async function solvePart(year, day, part, input, search = undefined) {
   console.group(`Part ${part}`);
   try {
-    const { default: solve } = await import(
-      new URL(
-        `lib/year.${year}/day.${day}/part.${part}/solve.js`,
-        import.meta.url
-      )
+    const url = new URL(
+      `lib/year.${year}/day.${day}/part.${part}/solve.js`,
+      import.meta.url
     );
+    url.search = search;
+    const { default: solve } = await import(url);
     if (solve) {
       console.time("duartion");
       try {
